@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    
+    <data>
+        
+        <variable
+            name="position"
+            type="java.lang.Integer" />
+        
+        <variable
+            name="herosViewModel"
+            type="com.ny.mvvmtest.viewmodel.HerosViewModel" />
+
+        <variable
+            name="activity"
+            type="com.ny.mvvmtest.view.ui.MainActivity" />
+        
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="5dp"
+        app:cardUseCompatPadding="true"
+        android:clickable="true"
+        android:focusable="true"
+        android:onClick="@{()-> herosViewModel.onItemClick(position,activity)}"
+        >
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:scaleType="centerCrop"
+            app:imageUrl='@{herosViewModel.imageUrl}' />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{herosViewModel.getTitel(position)}"
+            android:padding="10dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="16sp"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.cardview.widget.CardView>
+</layout>
